@@ -1,5 +1,6 @@
 #include "juice.h"
 
+//constructor
 Juice::Juice(std::string juiceName, float juicePrice, std::string fruit)
 {
 	 this->m_ofFruit = fruit;

@@ -1,5 +1,6 @@
 #include "beer.h"
 
+//constructor
 Beer::Beer(std::string beerName, float beerPrice, int alcoholPerc)
 {
 	 this->m_alcoholPercentage = alcoholPerc;

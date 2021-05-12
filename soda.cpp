@@ -1,5 +1,6 @@
 #include "soda.h"
 
+//constructor
 Soda::Soda(std::string sodaName, float sodaPrice, bool diet)
 {
 	 this->m_Diet = diet;

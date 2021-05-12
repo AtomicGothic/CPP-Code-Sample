@@ -10,6 +10,10 @@
 
 void tellStory(std::vector<Drink*>* drinkMenu, Player *player);
 
+/**********************************
+* main()
+* Entry function.
+**********************************/
 int main()
 {
 	 Player player = Player(20.00);
@@ -18,18 +22,16 @@ int main()
 	 Juice orangeJuice = Juice("Orange Juice", 2.99, "orange");
 
 	 std::vector<Drink*> drinkMenu = { &budweiser, &pepsi, &orangeJuice };
-	 
-	/* std::vector<std::unique_ptr<Drink>> drinkMenu;
-	 drinkMenu.push_back(std::make_unique<Beer>());
-	 drinkMenu.push_back(std::make_unique<Soda>());
-	 drinkMenu.push_back(std::make_unique<Juice>());*/
 
 	 tellStory(&drinkMenu, &player);
-
 
 	 return 0;
 }
 
+/**********************************
+* tellStory()
+* Offers the narrative.
+**********************************/
 void tellStory(std::vector<Drink*> *drinkMenu, Player *player)
 {
 	 std::cout << "\"You've traveled far from home. The land before you and behind has not seen the hand of man in many generations. It seems like you lived a dream from which you're finally waking up.\n"
@@ -42,6 +44,7 @@ void tellStory(std::vector<Drink*> *drinkMenu, Player *player)
 
 	 int response = 0;
 	 
+	 //only two options for the narrative
 	 while (response != 1 && response != 2)
 	 {
 		  std::cin >> response;
@@ -59,9 +62,12 @@ void tellStory(std::vector<Drink*> *drinkMenu, Player *player)
 
 	 std::cout << "\nYou pick up the menu, flatten out the creases, and peruse.\n";
 
+	 // loop through the drink menu and display the menu neatly.
 	 for (int i = 0; i < drinkMenu->size(); i++)
 	 {
 		  std::cout << std::endl << drinkMenu->at(i)->getName() << " - $" << drinkMenu->at(i)->getPrice();
+		  
+		  //is the drink carbonated or not?
 		  if (drinkMenu->at(i)->isCarbonated())
 		  {
 				std::cout << "\n Carbonated.";
@@ -71,17 +77,20 @@ void tellStory(std::vector<Drink*> *drinkMenu, Player *player)
 				std::cout << "\n Not carbonated.";
 		  }
 
+		  //is the drink a juice?
 		  if (drinkMenu->at(i)->getType() == "juice")
 		  {
 				std::cout << "\n Made from " << drinkMenu->at(i)->getFruit();
 		  }
 
+		  //does the drink have aclohol?
 		  if (drinkMenu->at(i)->isAlcoholic())
 		  {
 				std::cout << "\n " << drinkMenu->at(i)->getAlcoholPercentage() << "%";
 		  }
 	 }
 	 
+	 //option really doesn't matter for the sake of the written narrative
 	 int drinkDesire = 0;
 	 std::cout << "\n\nWhich drink do you want?\n";
 	 for (int i = 0; i < drinkMenu->size(); i++)

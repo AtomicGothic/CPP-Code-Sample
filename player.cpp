@@ -1,5 +1,6 @@
 #include "player.h"
 
+//constructor
 Player::Player(float startingMoney)
 {
 	 this->m_playerMoney = startingMoney;
